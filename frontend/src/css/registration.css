@@ -1,0 +1,95 @@
+.login_page{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  left: 0;
+}
+
+
+.login{
+  height: 80%;
+  width: 70%;
+  background-color: #ffffff;
+
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+}
+
+.login_form{
+  height: 100%;
+  width: 45%;
+  padding: 1%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.login_form form{
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 5%;
+
+  border-radius: 2%;
+  overflow: hidden;
+
+  margin-top: 5px;
+  z-index: 1; 
+}
+
+
+.login_form form .welocme_text{
+  width: 100%;
+  border-bottom: solid var(--violet-color) 2px;
+  margin-bottom: 20px;
+}
+
+.login_form form .welocme_text h1{
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 2%;
+}
+
+.login_form .register_container{
+  height: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.login_form .register_container>div{
+  display: block;
+  height: 40px
+}
+
+.login_form .register_container>div input{
+  border: 10px solid;
+  border-image-slice: 1;
+  border-width: 5px;
+  border-image-source: var(--yello-grad);
+  margin-top: 5px;
+}
+
+.login_form .register_container button{
+  background: var(--violet-grad);
+  padding: 12px;
+  border-radius: 10px;
+  color: #ffffff;
+  margin-top: 20px;
+}
+
+.banner{
+  height: 100%;
+  width: 55%;
+  background-color: aqua;
+}

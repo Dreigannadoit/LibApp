@@ -1,0 +1,66 @@
+.sidebar{
+    position: fixed;
+    top: 50%;
+    left: 2%;
+    height: 94%;
+    width: 20%;
+    transform: translateY(-50%);
+    border-radius: 15px;
+    overflow: hidden;
+    z-index: 99999;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 54px 55px, rgba(0, 0, 0, 0.32) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.sidebar nav{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    padding: 10%;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 5%;
+}
+
+header{
+    height: 15%;
+    width: 100%;
+    padding: 1% 25px;
+    margin-top: 1%;
+}
+
+header>div{
+    position: relative;
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 9;
+    border-radius: 15px;
+    overflow: hidden;
+
+    padding: 2% 2%;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 54px 55px, rgba(0, 0, 0, 0.32) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+header>div .user{
+    height: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 20%;
+}
+
+header>div .user .user_img{
+    height: 50px;
+    width: 50px;
+    overflow: hidden;
+    border-radius: 100%;
+    background-color: antiquewhite;
+}
