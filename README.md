@@ -5,8 +5,9 @@
 <h4>How to Run Program</h4>
 <h5>Prerequesists: </h5>
 <ul>
-  <li>IntelliJ</li>
-  <li>VS Code</li>
-  <li>Node.js</li>
-  <li>MySQL Workbench setup</li>
+  <li>IntelliJ - <i>Backend</i></li>
+  <li>VS Code - <i>Frontend</i></li>
+  <li>Node.js - <i>Frontend API communication</i></li>
+  <li>MySQL Workbench setup - <i>Database</i></li>
+  <li>Postmate - <i>Backend-Database Testing</i></li>
 </ul>
