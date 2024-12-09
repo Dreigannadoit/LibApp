@@ -47,19 +47,19 @@
 1. Install dependencies
    Navigate to the frontend folder and run in frontend terminal:
   ```bash
-   npm install
+npm install
  ```
 
 2. Start the development server
 Use:
   ```bash
-   npm run dev
+npm run dev
  ```
 
 3. Access the frontend
 Open your browser and go to:
 ```bash
-   http://localhost:5173
+http://localhost:5173
  ```
 
 ---
