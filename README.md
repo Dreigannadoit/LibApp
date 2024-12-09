@@ -69,6 +69,6 @@ http://localhost:5173
 1. **Use Postman for testing**
    Import the API collection from the postman folder.
 
-2. **Test endpoints**
+4. **Test endpoints**
    - Ensure the backend server is running.</li>
    - Use Postman to send GET, POST, PUT, DELETE requests to the endpoints.</li>
