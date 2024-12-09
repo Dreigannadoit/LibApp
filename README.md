@@ -26,10 +26,10 @@
       cd library-management
 
 2. **Open the project in IntelliJ**
-   Ensure you are using the correct JDK version (17-23).
+   -Ensure you are using the correct JDK version (17-23).
 
 3. **Setup database**
-   Create a new schema with the name "books"
+   -Create a new schema with the name "books"
 
 4. **Connetct Databse to Backend**
    Within the "application.properties" file located in `src/main/resources `, make sure to edit the password and username to your MySQL workbench setup
@@ -38,7 +38,7 @@
    spring.datasource.password=root@123
 
 5. **Run API**
-   Execute the main application file (LibraryTestAppApplication.java).
+   -Execute the main application file (LibraryTestAppApplication.java).
 
 ---
 
@@ -67,7 +67,7 @@ http://localhost:5173
 ### Testing APIs
 
 1. **Use Postman for testing**
-   Import the API collection from the postman folder.
+   -Import the API collection from the postman folder.
 
 4. **Test endpoints**
    - Ensure the backend server is running.</li>
