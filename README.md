@@ -64,11 +64,11 @@ Open your browser and go to:
 
 ---
 
-###Testing APIs
+### Testing APIs
 
-1. Use Postman for testing
+1. **Use Postman for testing**
    Import the API collection from the postman folder.
 
-2. Test endpoints
-      - Ensure the backend server is running.</li>
-      - Use Postman to send GET, POST, PUT, DELETE requests to the endpoints.</li>
+2. **Test endpoints**
+   - Ensure the backend server is running.</li>
+   - Use Postman to send GET, POST, PUT, DELETE requests to the endpoints.</li>
