@@ -14,9 +14,9 @@
 | MySQL Workbench | Database                                        | v8.3      |
 | Postman         | API Testing                                     | Latest    |
 
-## How to Run Program
-
 ---
+
+## How to Run Program
 
 ### Backend Setup
 1. **Clone the repository**  
