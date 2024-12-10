@@ -72,3 +72,18 @@ http://localhost:5173
 4. **Test endpoints**
    - Ensure the backend server is running.</li>
    - Use Postman to send GET, POST, PUT, DELETE requests to the endpoints.</li>
+
+---
+
+## Contributers
+
+| Members              | Contribution |
+|----------------------|--------------|
+| DIVINE ONGUE         |              |
+| JEIAN ALTHEA PANTIN  |              |
+| JOHN KERBY CERDA     |              |
+| LADY ANTONIA TUGAHAN |              |
+| LOURD ROBIN LEYCO    |              |
+| ROBERT ANDREI BAMBA  |              |
+| RONIE DANE NIOG      |              |
+| WESLEE ALESNA        |              |
