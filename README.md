@@ -32,7 +32,7 @@
    - Create a new schema with the name "books"
 
 4. **Connect Databse to Backend**
-   Within the "application.properties" file located in `src/main/resources `, make sure to edit the password and username to your MySQL workbench setup
+   - Within the "application.properties" file located in `src/main/resources `, make sure to edit the password and username to your MySQL workbench setup
    ```spring set-up file
    spring.datasource.username=root
    spring.datasource.password=root@123
