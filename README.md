@@ -4,8 +4,6 @@
 
 ---
 
-## How to Run Program
-
 ### Prerequisites
 
 | Resource        | Use Case                                        | Version   |
@@ -15,6 +13,8 @@
 | Node.js         | Frontend API communication and VITE Development | v22.12    |
 | MySQL Workbench | Database                                        | v8.3      |
 | Postman         | API Testing                                     | Latest    |
+
+## How to Run Program
 
 ---
 
