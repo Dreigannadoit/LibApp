@@ -1,32 +1,33 @@
-import React from 'react'
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
-import '../css/navbar.css'
-import { NavLink } from 'react-router-dom';
-
-const Header = ( { current_page } ) => {
-
-  // TODO: CONNECT USER DATASE HERE
+const Header = ({ current_page, setIsAuthenticated }) => {
   const user_avatar = "";
   const user_name = "Username";
+  const navigate = useNavigate();
+
+  const handleExit = () => {
+    setIsAuthenticated(false); // Set authentication state to false
+    localStorage.removeItem("isAuthenticated"); // Clear authentication status
+    navigate("/"); // Redirect to login
+  };
 
   return (
     <header>
       <div>
         <h1>{current_page}</h1>
-
         <div className="user">
           <p>{user_name}</p>
           <div className="user_img">
-            <img src={user_avatar} alt="" />
+            <img src={user_avatar} alt="User Avatar" />
           </div>
-
-          
-          <NavLink to="/">Exit</NavLink>
+          <button onClick={handleExit} className="exit-button">
+            Exit
+          </button>
         </div>
-        
       </div>
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

@@ -4,7 +4,7 @@ import Header from "../components/Header";
 import { NavLink } from "react-router-dom";
 import { userStats } from "../constants";
 
-const Members = () => {
+const Members = ({ setIsAuthenticated }) => {
   const membersPerPage = 10; // Number of members to show per page
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState(""); // State for search input
@@ -33,7 +33,7 @@ const Members = () => {
 
   return (
     <section>
-      <Header current_page="Members" />
+      <Header current_page="Members" setIsAuthenticated={setIsAuthenticated}/>
 
       <div className="content">
         <div className="content_container">

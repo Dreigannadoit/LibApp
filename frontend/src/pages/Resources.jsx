@@ -3,8 +3,8 @@ import Header from "../components/Header";
 import { NavLink, useNavigate } from "react-router-dom";
 import "../css/resources.css";
 
-const Resources = () => {
-  const [books, setBooks] = useState([]);
+const Resources = ({ setIsAuthenticated }) => {
+  const [books, setBooks] = useState([]); // Correct
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedGenre, setSelectedGenre] = useState("");
   const [selectedAvailability, setSelectedAvailability] = useState("");
@@ -15,30 +15,33 @@ const Resources = () => {
       try {
         const response = await fetch("http://localhost:8080/api/books");
         const data = await response.json();
+        console.log("Fetched data:", data); // Inspect this log
         setBooks(data);
-        console.log(data);
       } catch (error) {
         console.error("Error Fetching books:", error.message);
       }
-    };
+    };    
 
     fetchBooks();
   }, []);
 
   // Filter books based on the search query, genre, and availability
-  const filteredBooks = books.filter((book) => {
-    const matchesSearch = book.title
-      .toLowerCase()
-      .includes(searchQuery.toLowerCase());
-    const matchesGenre =
-      selectedGenre === "" || book.genre.toLowerCase() === selectedGenre.toLowerCase();
-    const matchesAvailability =
-      selectedAvailability === "" ||
-      (selectedAvailability === "Available" && book.available) ||
-      (selectedAvailability === "Unavailable" && !book.available);
+  const filteredBooks = Array.isArray(books)
+  ? books.filter((book) => {
+      const matchesSearch = book.title
+        .toLowerCase()
+        .includes(searchQuery.toLowerCase());
+      const matchesGenre =
+        selectedGenre === "" ||
+        book.genre.toLowerCase() === selectedGenre.toLowerCase();
+      const matchesAvailability =
+        selectedAvailability === "" ||
+        (selectedAvailability === "Available" && book.available) ||
+        (selectedAvailability === "Unavailable" && !book.available);
 
-    return matchesSearch && matchesGenre && matchesAvailability;
-  });
+      return matchesSearch && matchesGenre && matchesAvailability;
+    })
+  : [];
 
   const handleDelete = async (bookId) => {
     try {
@@ -61,7 +64,7 @@ const Resources = () => {
 
   return (
     <section className="resources">
-      <Header current_page="Resources" />
+      <Header current_page="Resources" setIsAuthenticated={setIsAuthenticated}/>
 
       <div className="content">
         <div className="content_container">

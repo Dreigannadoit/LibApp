@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import useScrollToTop from "../hooks/useScrollToTop";
 import "../css/crudbook.css";
 
-const AddBook = () => {
+const AddBook = ({ setIsAuthenticated }) => {
   const [formData, setFormData] = useState({
     title: "",
     author: "",
@@ -62,7 +62,7 @@ const AddBook = () => {
 
   return (
     <section className="add-book">
-      <Header current_page="Add a Book" />
+      <Header current_page="Add a Book" setIsAuthenticated={setIsAuthenticated} />
 
       <div className="content">
         <div className="center-form">

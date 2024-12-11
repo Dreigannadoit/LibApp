@@ -5,7 +5,7 @@ import { Button, Form } from 'react-bootstrap';
 import "../css/crudbook.css";
 import Header from '../components/Header';
 
-const UpdateBook = () => {
+const UpdateBook = ({ setIsAuthenticated }) => {
     const { id } = useParams();
     const navigate = useNavigate();
 
@@ -84,7 +84,7 @@ const UpdateBook = () => {
 
     return (
         <section className="update-book">
-            <Header current_page="Edit a Book" />
+            <Header current_page="Edit a Book" setIsAuthenticated={setIsAuthenticated}/>
 
             <div className="content">
                 <div className="center-form">

@@ -4,18 +4,22 @@
   align-items: center;
   width: 100%;
   left: 0;
+  padding-left: 0;
 }
 
 
 .login{
-  height: 80%;
-  width: 70%;
-  background-color: #ffffff;
+  position: relative;
+  height: 590px;
+  width: 920px;
 
   border-radius: 20px;
   display: flex;
   flex-direction: row;
   overflow: hidden;
+  z-index: 99;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 54px 55px, rgba(0, 0, 0, 0.32) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
 }
 
 .login_form{
@@ -26,10 +30,12 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  z-index: 99;
 }
 
 .login_form form{
   position: relative;
+  height: 100%;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -46,38 +52,76 @@
 
 
 .login_form form .welocme_text{
+  position: relative;
+  height: 25%;
   width: 100%;
-  border-bottom: solid var(--violet-color) 2px;
+  display: flex;
   margin-bottom: 20px;
 }
 
 .login_form form .welocme_text h1{
-  font-size: 2.5rem;
-  text-align: center;
-  margin-bottom: 2%;
+  font-size: 60px;
+  text-align: left;
+  margin-bottom: 20px;
+  color: var(--white-color);
 }
 
 .login_form .register_container{
-  height: auto;
+  height: 60%;
   width: 100%;
   display: flex;
   justify-content: center;
-  justify-content: center;
+  justify-content: space-evenly;
   flex-direction: column;
-  gap: 40px;
 }
 
 .login_form .register_container>div{
   display: block;
-  height: 40px
+  height: 60px;
+  width: 100%;
+}
+
+.login_form .register_container>div label{
+  display: block;
+  height: 40%;
+  width: 100%;
+  color: var(--white-color);
+}
+
+.login_form .register_container>div .input_field{
+  position: relative;
+  height: 60%;
+  width: 100%;
+}
+
+.login_form .register_container>div .input_field::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  border-radius: 50px; /*1*/
+  border: 4px solid transparent; /*2*/
+  background: var(--yello-grad) border-box; /*3*/
+  mask: /*4*/
+    linear-gradient(#000 0 0) padding-box, 
+    linear-gradient(#000 0 0);
+  mask-composite: exclude; 
+  z-index: -1;
 }
 
 .login_form .register_container>div input{
-  border: 10px solid;
-  border-image-slice: 1;
-  border-width: 5px;
-  border-image-source: var(--yello-grad);
-  margin-top: 5px;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  height: calc(90% -4px);
+  width: calc(90% -4px);
+  z-index: 999;
+  border-radius: 50px; 
+  background-color: transparent;
+  padding: 0 5%;
+  color: var(--white-color);
 }
 
 .login_form .register_container button{
@@ -91,5 +135,10 @@
 .banner{
   height: 100%;
   width: 55%;
-  background-color: aqua;
+  background-color: var(--dark-color);
+  background-image: url(../assets/imgs/background.gif);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 80% center;
+  z-index: 99;
 }

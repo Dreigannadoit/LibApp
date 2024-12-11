@@ -18,7 +18,7 @@ ChartJs.register(
   ArcElement
 );
 
-const Dashboard = () => {
+const Dashboard = ({ setIsAuthenticated }) => {
   // State for statuses
   const [statusData, setStatusData] = useState({
     totalBooksAvailable: 120, // Example data
@@ -31,7 +31,7 @@ const Dashboard = () => {
 
     <section className='dashoard'>
 
-      <Header current_page="Dashboard" />
+      <Header current_page="Dashboard" setIsAuthenticated={setIsAuthenticated} />
 
       <div className="content">
         <div className="content_container">
