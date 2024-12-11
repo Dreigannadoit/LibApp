@@ -9,8 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.LinkedList;
 
 @RestController
 @RequestMapping("/api")
@@ -26,7 +25,7 @@ public class BookController {
     }
 
     @GetMapping("books")
-    public List<Book> getAllBooks(){
+    public LinkedList<Book> getAllBooks(){
         return bookService.getAllBooks();
     }
 

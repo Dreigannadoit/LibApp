@@ -32,7 +32,7 @@ const Members = ({ setIsAuthenticated }) => {
   };
 
   return (
-    <section>
+    <section className="members">
       <Header current_page="Members" setIsAuthenticated={setIsAuthenticated}/>
 
       <div className="content">
@@ -80,7 +80,6 @@ const Members = ({ setIsAuthenticated }) => {
                       <td>{user.previous_book_borrowed}</td>
                       <td className="crud_controlls">
                         <NavLink to="">Edit</NavLink>
-                        <br />
                         <button>Delete</button>
                       </td>
                     </tr>

@@ -20,12 +20,41 @@ export const borrowRateThisWeek = {
         {
             label: "Borrowed Books 2024",
             data: [510, 110, 57, 513, 15, 170, 210, 120, 97, 85, 22, 701],
-            borderColor: "rgb(75, 192, 192)"
+            backgroundColor: [
+                "rgb(255, 99, 132)", // Computer Science
+                "rgb(54, 162, 235)", // Mathematics
+                "rgb(255, 205, 86)", // History
+                "rgb(75, 192, 192)", // Calculus
+                "rgb(153, 102, 255)", // Physics
+                "rgb(255, 159, 64)", // General Science
+                "rgb(201, 203, 207)", // Literature
+                "rgb(255, 99, 71)", // Economics
+                "rgb(144, 238, 144)", // Entrepreneurship
+                "rgb(135, 206, 250)", // Business Administration
+                "rgb(244, 164, 96)", // Natural Science
+                "rgb(123, 104, 238)", // Algebra
+                "rgb(60, 179, 113)", // Political Science
+            ],
         },
         {
             label: "Borrowed Books 2023",
             data: [0, 310, 54, 553, 17, 180, 240, 180, 105, 62, 201],
-            borderColor: "rgb(75, 120, 192)"
+            borderColor: "rgb(75, 120, 192)",
+            backgroundColor: [
+                "rgb(255, 99, 132)", // Computer Science
+                "rgb(54, 162, 235)", // Mathematics
+                "rgb(255, 205, 86)", // History
+                "rgb(75, 192, 192)", // Calculus
+                "rgb(153, 102, 255)", // Physics
+                "rgb(255, 159, 64)", // General Science
+                "rgb(201, 203, 207)", // Literature
+                "rgb(255, 99, 71)", // Economics
+                "rgb(144, 238, 144)", // Entrepreneurship
+                "rgb(135, 206, 250)", // Business Administration
+                "rgb(244, 164, 96)", // Natural Science
+                "rgb(123, 104, 238)", // Algebra
+                "rgb(60, 179, 113)", // Political Science
+            ],
         }
 
     ]

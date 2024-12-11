@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
 import { NavLink, useNavigate } from "react-router-dom";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 import "../css/resources.css";
 
 const Resources = ({ setIsAuthenticated }) => {
@@ -83,9 +84,9 @@ const Resources = ({ setIsAuthenticated }) => {
             {filteredBooks.map((book, index) => (
               <div className="book_card" key={book.id || index}>
                 <div className="img_container">
-                  <img
-                    src="https://lh3.google.com/u/1/d/1zKIu8ZHl2cONDuwnLkn-L_HynfoyaXAC=w1877-h972-iv2"
+                  <LazyLoadImage
                     alt={`${book.title} cover`}
+                    src="https://lh3.google.com/u/1/d/1zKIu8ZHl2cONDuwnLkn-L_HynfoyaXAC=w1877-h972-iv2" 
                   />
                 </div>
 
@@ -191,3 +192,6 @@ const UserSortTools = ({
 };
 
 export default Resources;
+
+
+// react-router dom, chartjs, and npm i react-lazy-load-image-component, and  npm i lodash.debounce   

@@ -1,5 +1,13 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
+import {
+  bookIconAdd,
+  borrowIcon,
+  dashboardIcon,
+  lgo,
+  membersIcon,
+  resourcesIcon
+} from '../assets/icons'
 
 import '../css/navbar.css'
 
@@ -7,16 +15,43 @@ const Navbar = () => {
   return (
     <div className='sidebar'>
       <nav>
-
-        <h1>Logo</h1>
+        <img src={lgo} alt="" />
+        
+        <NavLink to="/addbook">
+          <span>Add Book</span> 
+          <img src={bookIconAdd} alt="" />
+        </NavLink>
 
         <p>Menu</p>
 
         <ul>
-          <li><NavLink to="/dashboard">Dashboard</NavLink></li>
-          <li><NavLink to="/members">Members</NavLink></li>
-          <li><NavLink to="/resources">Resources</NavLink></li>
-          <li><NavLink to="/borrow">Borrow</NavLink></li>
+          <li>
+            <NavLink to="/dashboard">
+              <img src={dashboardIcon} alt="" />
+              <span>Dashboard</span> 
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink to="/members">
+              <img src={membersIcon} alt="" />
+              <span>Members</span> 
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink to="/resources">
+              <img src={resourcesIcon} alt="" />
+              <span>Resources</span> 
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink to="/borrow">
+              <img src={borrowIcon} alt="" />
+              <span>Borrow</span> 
+            </NavLink>
+          </li>
         </ul>
 
       </nav>

@@ -1,5 +1,5 @@
 .dashoard .content .status_blocks {
-    height: 200px;
+    height: 150px;
     width: 100%;
 
     display: flex;
@@ -22,9 +22,16 @@
     width: 60%;
     position: relative;
 
-    background-color: white;
+    background-color: var(--dark-color);
+    border-color: aliceblue;
+    font-family: "Pixelify Sans", sans-serif;
     padding: 10px;
     border-radius: 15px;
+}
+
+.dashoard .borrowrate canvas{
+    font-family: "Pixelify Sans", sans-serif;
+
 }
 
 .dashoard .pie_container {

@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Login = ({ setIsAuthenticated }) => {
   const [formData, setFormData] = useState({ username: "", password: "" });
+  const [isInvalid, setIsInvalid] = useState(false); // State to track invalid login
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -13,21 +14,39 @@ const Login = ({ setIsAuthenticated }) => {
     }));
   };
 
+  const animateInvalidate = () => {
+    setIsInvalid(true); 
+
+    setTimeout(() => {
+      setIsInvalid(false);
+    }, 300);
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (formData.username === "Hello" && formData.password === "World") {
+
+    if (
+      (formData.username === "Hello" && formData.password === "World") ||
+      (formData.username === "123" && formData.password === "123")
+    ) {
       console.log("Login successful");
+      setIsInvalid(false); // Reset invalid state
       setIsAuthenticated(true); // Set authentication to true
       navigate("/dashboard");
-    } else {
+    }
+    else if(
+      (formData.username === "" && formData.password === "")){
+        animateInvalidate();
+    }
+    else {
       console.log("Invalid credentials");
-      alert("Invalid username or password");
+      animateInvalidate();
     }
   };
 
   return (
     <section className="login_page">
-      <div className="login">
+      <div className={`login ${isInvalid ? "invalid" : ""}`}>
         <div className="banner"></div>
         <div className="login_form">
           <form onSubmit={handleSubmit}>
@@ -46,9 +65,7 @@ const Login = ({ setIsAuthenticated }) => {
                     name="username"
                     value={formData.username}
                     onChange={handleChange}
-                    required
                   />
-
                 </div>
               </div>
               <div className="password">
@@ -62,15 +79,18 @@ const Login = ({ setIsAuthenticated }) => {
                     name="password"
                     value={formData.password}
                     onChange={handleChange}
-                    required
                   />
                 </div>
               </div>
               <button type="submit">Login</button>
             </div>
           </form>
-          <span>User : <i>Hello</i></span>
-          <span>Password : <i>World</i></span>
+          <span>
+            User: <i>Hello</i>
+          </span>
+          <span>
+            Password: <i>World</i>
+          </span>
         </div>
       </div>
     </section>

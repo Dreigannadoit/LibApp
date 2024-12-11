@@ -8,7 +8,7 @@
     align-items: flex-start;
     flex-direction: column;
     border-radius: 5%;
-    padding: 4% 2%;
+    padding: 2% 2%;
     overflow: hidden;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
@@ -48,7 +48,7 @@
 }
 
 .status.block h1{
-    font-size: 2rem;
+    font-size: 3.3rem;
     font-weight: 700;
     line-height: 100%;
     z-index: 3;

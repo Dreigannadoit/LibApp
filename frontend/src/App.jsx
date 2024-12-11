@@ -12,20 +12,28 @@ import './css/app.css';
 import AddBook from "./pages/AddBook";
 import AddUser from "./pages/AddUser";
 import UpdateBook from "./pages/UpdateBook";
+import { bg_m } from "./assets/sound";
 
 function App() {
   // Get authentication state from localStorage or default to false
   const [isAuthenticated, setIsAuthenticated] = useState(() => {
     return localStorage.getItem("isAuthenticated") === "true";
   });
+  const [isNavOpen, setNavOpen] = useState();
 
   // Update localStorage whenever isAuthenticated changes
   useEffect(() => {
     localStorage.setItem("isAuthenticated", isAuthenticated);
   }, [isAuthenticated]);
-
+ 
   return (
     <BrowserRouter>
+      {/* Background Music */}
+      <audio autoPlay loop>
+        <source src={bg_m} type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+
       <ConditionalNavbar />
       <div className="wrapper">
         <Routes>
@@ -37,7 +45,7 @@ function App() {
             path="/dashboard"
             element={
               isAuthenticated ? (
-                <Dashboard setIsAuthenticated={setIsAuthenticated} />
+                <Dashboard setIsAuthenticated={setIsAuthenticated}/>
               ) : (
                 <Navigate to="/" replace />
               )
@@ -46,31 +54,31 @@ function App() {
           <Route
             path="/resources"
             element={
-              isAuthenticated ? <Resources /> : <Navigate to="/" replace />
+              isAuthenticated ? <Resources setIsAuthenticated={setIsAuthenticated} /> : <Navigate to="/" replace />
             }
           />
           <Route
             path="/addbook"
             element={
-              isAuthenticated ? <AddBook /> : <Navigate to="/" replace />
+              isAuthenticated ? <AddBook setIsAuthenticated={setIsAuthenticated} /> : <Navigate to="/" replace />
             }
           />
           <Route
             path="/resources/:id"
             element={
-              isAuthenticated ? <UpdateBook /> : <Navigate to="/" replace />
+              isAuthenticated ? <UpdateBook setIsAuthenticated={setIsAuthenticated} /> : <Navigate to="/" replace />
             }
           />
           <Route
             path="/members"
             element={
-              isAuthenticated ? <Members /> : <Navigate to="/" replace />
+              isAuthenticated ? <Members setIsAuthenticated={setIsAuthenticated} /> : <Navigate to="/" replace />
             }
           />
           <Route
             path="/borrow"
             element={
-              isAuthenticated ? <Borrow /> : <Navigate to="/" replace />
+              isAuthenticated ? <Borrow setIsAuthenticated={setIsAuthenticated} /> : <Navigate to="/" replace />
             }
           />
         </Routes>

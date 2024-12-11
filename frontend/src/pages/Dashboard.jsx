@@ -2,8 +2,8 @@ import "../css/dashboard.css";
 import Header from '../components/Header';
 import Status from '../components/status';
 import React, { useEffect, useRef, useState } from 'react'
-import { Chart as ChartJs, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, ArcElement } from "chart.js";
-import { Doughnut, Line, Pie } from 'react-chartjs-2';
+import { Chart as ChartJs, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, ArcElement, BarController, BarElement } from "chart.js";
+import { Bar, Doughnut, Line, Pie } from 'react-chartjs-2';
 import { borrowRateThisWeek, popularGenre, sum } from "../constants";
 import { avatar, borrow, borrowedBooks, overdue } from "../assets/icons";
 
@@ -15,7 +15,9 @@ ChartJs.register(
   Title,
   Tooltip,
   Legend,
-  ArcElement
+  ArcElement,
+  BarElement,
+  BarController
 );
 
 const Dashboard = ({ setIsAuthenticated }) => {
@@ -38,9 +40,9 @@ const Dashboard = ({ setIsAuthenticated }) => {
 
           <div className="status_blocks">
             <Status title="Total Books Available" status={statusData.totalBooksAvailable} imgurl={borrowedBooks} />
-            <Status title="Borrowed Books This Week" status={statusData.borrowedBooksThisWeek} imgurl={borrow} />
-            <Status title="Total Overdue Books" status={statusData.totalOverdueBooks} imgurl={overdue} />
-            <Status title="Registered Members" status={statusData.registeredMembers} imgurl={avatar} />
+            <Status title="Borrowed Books" status={statusData.borrowedBooksThisWeek} imgurl={borrow} />
+            <Status title="Overdue" status={statusData.totalOverdueBooks} imgurl={overdue} />
+            <Status title="Members" status={statusData.registeredMembers} imgurl={avatar} />
           </div>
 
           <div className="graphs">
@@ -58,17 +60,24 @@ const Dashboard = ({ setIsAuthenticated }) => {
 const BorrowRate = () => {
   const options = {
     responsive: true,
-    maintainAspectRatio: false, // Allow CSS to control sizing
+    maintainAspectRatio: false,
     scales: {
       y: {
         beginAtZero: true
       }
+    },
+    plugins: {
+      legend: {
+        display: false // You can customize legend display here
+      },
+      filler: {
+        backgroundColor: 'rgba(1, 16, 47, 0.1)' // Adjust opacity as needed
+      }
     }
   };
-
   return (
     <div className="borrowrate">
-      <Line options={options} data={borrowRateThisWeek} />
+      <Bar options={options} data={borrowRateThisWeek} backgroundColor="#01102f"/>
     </div>
   );
 };
