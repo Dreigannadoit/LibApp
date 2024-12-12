@@ -13,7 +13,7 @@
     transition: all 250ms 50ms cubic-bezier(0.175, 0.885, 0.32, 1.375);
 }
 
-body:has(div.open-nav) .sidebar{
+body:has(div.close-nav) .sidebar{
     width: 5%;
 }
 
@@ -35,7 +35,7 @@ body:has(div.open-nav) .sidebar{
     opacity: 1;
     transition: all 500ms 0ms cubic-bezier(0.175, 0.885, 0.32, 1.375);
 }
-body:has(div.open-nav) .sidebar nav p{
+body:has(div.close-nav) .sidebar nav p{
     opacity: 0;
 }
 
@@ -48,7 +48,7 @@ body:has(div.open-nav) .sidebar nav p{
         transform 250ms 300ms cubic-bezier(0.175, 0.885, 0.32, 1.375)
 }
 
-body:has(div.open-nav) .sidebar nav>img{
+body:has(div.close-nav) .sidebar nav>img{
     opacity: 0;
     transform: translateY(-50%);
 }
@@ -68,7 +68,7 @@ body:has(div.open-nav) .sidebar nav>img{
     transition: all 250ms 50ms cubic-bezier(0.175, 0.885, 0.32, 1.375);
 }
 
-body:has(div.open-nav) .sidebar nav>a span{
+body:has(div.close-nav) .sidebar nav>a span{
     height: 50px;
     font-size: 0;
 }
@@ -78,11 +78,11 @@ body:has(div.open-nav) .sidebar nav>a span{
     transition: all 250ms 0ms cubic-bezier(0.175, 0.885, 0.32, 1.375);
 }
 
-body:has(div.open-nav) .sidebar nav>a span{
+body:has(div.close-nav) .sidebar nav>a span{
     font-size: 0;
 }
 
-body:has(div.open-nav) .sidebar nav>a img{
+body:has(div.close-nav) .sidebar nav>a img{
     transform: translateX(-20%);
 }
 
@@ -106,7 +106,7 @@ body:has(div.open-nav) .sidebar nav>a img{
     margin: 0 0 25px 0;
 }
 
-body:has(div.open-nav) .sidebar nav ul li:hover{
+body:has(div.close-nav) .sidebar nav ul li:hover{
     margin: 0 0 0 0;
 }
 
@@ -128,7 +128,7 @@ body:has(div.open-nav) .sidebar nav ul li:hover{
         padding 300ms 50ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-body:has(div.open-nav) .sidebar nav ul a{
+body:has(div.close-nav) .sidebar nav ul a{
     font-size: 0;
 }
 
@@ -137,7 +137,7 @@ body:has(div.open-nav) .sidebar nav ul a{
     padding: 15% 10%;
 }
 
-body:has(div.open-nav) .sidebar nav ul a:hover{
+body:has(div.close-nav) .sidebar nav ul a:hover{
     padding: 0% 0%;
 }
 
@@ -145,10 +145,10 @@ body:has(div.open-nav) .sidebar nav ul a:hover{
     filter: invert(100%);
     transition: all 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-body:has(div.open-nav) .sidebar nav ul a img{
+body:has(div.close-nav) .sidebar nav ul a img{
     transform: translate(50%);
 }
-body:has(div.open-nav) .sidebar nav ul li:nth-child(3) a img{
+body:has(div.close-nav) .sidebar nav ul li:nth-child(3) a img{
     transform: translate(70%);
 }
 
@@ -224,10 +224,10 @@ header>div>div:nth-child(1) button img:nth-child(1){
 header>div>div:nth-child(1) button img:nth-child(2){
     opacity: 1;
 }
-body:has(div.open-nav) header>div>div:nth-child(1) button img:nth-child(1){
+body:has(div.close-nav) header>div>div:nth-child(1) button img:nth-child(1){
     opacity: 1;
 }
-body:has(div.open-nav) header>div>div:nth-child(1) button img:nth-child(2){
+body:has(div.close-nav) header>div>div:nth-child(1) button img:nth-child(2){
     opacity: 0;
 }
 

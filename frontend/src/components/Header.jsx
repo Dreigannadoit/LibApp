@@ -1,16 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { bookclose, bookopen } from "../assets/icons";
+import useToggleNav from "../hooks/useToggleNav";
 
 const Header = ({ current_page, setIsAuthenticated }) => {
-  const [openNav, setOpenNav] = useState(false); // State to manage 'open-nav'
-  const user_avatar = ""; 
+  const { openNav, handleToggleNav } = useToggleNav();
+  const user_avatar = "";
   const user_name = "Username";
   const navigate = useNavigate();
-
-  const handleToggleNav = () => {
-    setOpenNav((prev) => !prev); 
-  };
 
   const handleExit = () => {
     setIsAuthenticated(false); // Set authentication state to false
@@ -20,11 +17,11 @@ const Header = ({ current_page, setIsAuthenticated }) => {
 
   return (
     <header>
-      <div className={`${openNav ? "" : "open-nav"}`}> 
+      <div className={`${openNav ? "" : "close-nav"}`}>
         <div>
-          <button onMouseEnter={handleToggleNav}>
-            <img src={bookclose} alt="" />
-            <img src={bookopen} alt="" />
+          <button onClick={handleToggleNav}>
+            <img src={bookclose} alt="Close Nav Icon" />
+            <img src={bookopen} alt="Open Nav Icon" />
           </button>
           <h1>{current_page}</h1>
         </div>

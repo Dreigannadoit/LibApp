@@ -45,7 +45,7 @@
 ### Frontend Setup
 
 1. Install dependencies
-   Navigate to the frontend folder and run in frontend terminal:
+   In VSCode, navigate to the frontend folder and run in frontend terminal:
   ```bash
 npm install
  ```

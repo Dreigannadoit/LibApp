@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import {
   bookIconAdd,
@@ -12,8 +12,14 @@ import {
 import '../css/navbar.css'
 
 const Navbar = () => {
+  const [openNav, setOpenNav] = useState(false); 
+
+  const handleToggleNav = () => {
+    setOpenNav((prev) => !prev); 
+  };
+
   return (
-    <div className='sidebar'>
+    <div className={`sidebar ${openNav ? "" : "closr-nav"}`} onMouseEnter={handleToggleNav} onMouseLeave={handleToggleNav}>
       <nav>
         <img src={lgo} alt="" />
         
