@@ -32,26 +32,23 @@ const AddBook = ({ setIsAuthenticated }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
-    // Transform the data to match the backend expectations
+    
     const payload = {
-      ...formData,
-      available: formData.isAvailable, // Map `isAvailable` to `available`
+      bookTitle: formData.title, // Ensure it matches the entity field
+      bookAuthor: formData.author,
+      bookGenre: formData.genre,
+      bookStatus: formData.isAvailable, // Boolean field for availability
     };
-    delete payload.isAvailable; // Remove `isAvailable` to avoid confusion
-  
-    console.log(payload);
-  
+
     try {
       const response = await fetch("http://localhost:8080/bookApi/book", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload), // Send the transformed payload
+        body: JSON.stringify(payload),
       });
-  
       const data = await response.json();
       console.log("Book Created: ", data);
-  
+
       navigate("/resources");
     } catch (error) {
       console.log("Error creating book: ", error.message);
@@ -63,7 +60,6 @@ const AddBook = ({ setIsAuthenticated }) => {
   return (
     <section className="add-book">
       <Header current_page="Add a Book" setIsAuthenticated={setIsAuthenticated} />
-
       <div className="content">
         <div className="center-form">
           <h1>Post New Book</h1>
@@ -133,7 +129,6 @@ const AddBook = ({ setIsAuthenticated }) => {
         </div>
       </div>
     </section>
-
   );
 };
 
