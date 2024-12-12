@@ -237,9 +237,10 @@ header>div .user{
     height: 100%;
 
     display: flex;
-    justify-content: space-between;
+    justify-content:flex-end;
     align-items: center;
     width: 20%;
+    gap: 35px;
 }
 
 header>div .user .user_img{
@@ -248,4 +249,13 @@ header>div .user .user_img{
     overflow: hidden;
     border-radius: 100%;
     background-color: antiquewhite;
+}
+
+header>div .user button {
+    height: 100%;
+    background: none;
+}
+
+header>div .user button img {
+    height: 100%;
 }

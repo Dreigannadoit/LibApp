@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.Stack;
 
 @Entity
@@ -14,22 +13,18 @@ import java.util.Stack;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id") // Map to "user_id" column in the database
     private Long id;
 
+    @Column(name = "username", nullable = false, unique = true) // Map to "username" column
     private String userName;
 
+    @Column(name = "password", nullable = false) // Map to "password" column
     private String userPassword;
 
-    private LocalDateTime userJoined;
+    @Column(name = "status", nullable = false) // Map to "status" column
+    private String userStatus;
 
-    private String userStatus; // Borrowing, Overdue
-
+    @Transient // This field is not persisted in the database
     private Stack<Book> userBorrowedHistory;
-
-    @PrePersist
-    public void prePerisist() {
-        if (this.userJoined == null) {
-            this.userJoined = LocalDateTime.now();
-        }
-    }
 }

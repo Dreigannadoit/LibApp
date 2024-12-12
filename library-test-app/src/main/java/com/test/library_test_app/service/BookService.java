@@ -5,22 +5,32 @@ import com.test.library_test_app.books.repository.BookRepository;
 import jakarta.annotation.PostConstruct;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.*;
+
 
 @Service
 @RequiredArgsConstructor
 public class BookService {
     private PriorityQueue<Book> topRatedPublications;
     private final BookRepository bookRepository;
-    private final int NUMBER_OF_TOP_RATED_BOOKS = 10;
+    private final int NUMBER_OF_TOP_RATED_BOOKS = 3;
+
+    @Value("${file.upload-dir}") // Inject the file upload directory from application.properties
+    private String uploadDir;
 
     @PostConstruct
     public void init() {
         topRatedPublications = new PriorityQueue<>(Comparator.comparing(Book::getRating).reversed());
     }
-
 
     public Book postBook(Book book) {
         return bookRepository.save(book);
@@ -50,10 +60,12 @@ public class BookService {
         if (optionalBook.isPresent()) {
             Book existingBook = optionalBook.get();
 
-            existingBook.setAuthor(book.getAuthor());
             existingBook.setTitle(book.getTitle());
+            existingBook.setAuthor(book.getAuthor());
             existingBook.setGenre(book.getGenre());
-            existingBook.setAvailable(book.isAvailable());
+            existingBook.setDescription(book.getDescription());
+            existingBook.setRating(book.getRating());
+            existingBook.setBookStatus(book.isBookStatus());
 
             return bookRepository.save(existingBook);
         }
@@ -71,7 +83,7 @@ public class BookService {
     }
 
     public LinkedList<Book> getTopRatedBook(){
-        LinkedList<Book> sortedBooks = new LinkedList<>(topRatedPublications);
+        LinkedList<Book> sortedBooks = new LinkedList<>(bookRepository.findAll());
         sortedBooks.sort(Comparator.comparing(Book::getRating).reversed());
 
         return sortedBooks;

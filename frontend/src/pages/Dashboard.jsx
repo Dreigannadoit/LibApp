@@ -6,6 +6,7 @@ import { Chart as ChartJs, CategoryScale, LinearScale, PointElement, LineElement
 import { Bar, Doughnut, Line, Pie } from 'react-chartjs-2';
 import { borrowRateThisWeek, popularGenre, sum } from "../constants";
 import { avatar, borrow, borrowedBooks, overdue } from "../assets/icons";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 ChartJs.register(
   CategoryScale,
@@ -29,6 +30,22 @@ const Dashboard = ({ setIsAuthenticated }) => {
     registeredMembers: 230, // Example data
   });
 
+  const [books, setBooks] = useState([]); // Correct
+
+  useEffect(() => {
+    const fetchBooks = async () => {
+      try {
+        const response = await fetch("http://localhost:8080/bookApi/toprated");
+        const data = await response.json();
+        console.log("Fetched data:", data); // Inspect this log
+        setBooks(data);
+      } catch (error) {
+        console.error("Error Fetching books:", error.message);
+      }
+    };
+
+    fetchBooks();
+  }, []);
   return (
 
     <section className='dashoard'>
@@ -50,6 +67,32 @@ const Dashboard = ({ setIsAuthenticated }) => {
           <div className="graphs">
             <BorrowRate />
             <TotalGenre />
+          </div>
+
+          <div className="toprated">
+            <h1>Top Rated Book</h1>
+            <div>
+              {books.slice(0, 3).map((book, index) => (
+                <div className="book_card" key={book.id || index}>
+                  <div className="img_container">
+                    <LazyLoadImage
+                      alt={`${book.title} cover`}
+                      src="https://lh3.google.com/u/1/d/1zKIu8ZHl2cONDuwnLkn-L_HynfoyaXAC=w1877-h972-iv2"
+                    />
+                  </div>
+
+                  <div className="info">
+
+                    <p>{book.rating}/5</p>
+                    <h1>{book.title}</h1>
+                    <h2>{book.author}</h2>
+                    <p>#{book.id}</p>
+                    <p>{book.genre}</p>
+
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
           <TableUsers />
@@ -79,7 +122,7 @@ const BorrowRate = () => {
   };
   return (
     <div className="borrowrate">
-      <Bar options={options} data={borrowRateThisWeek} backgroundColor="#01102f"/>
+      <Bar options={options} data={borrowRateThisWeek} backgroundColor="#01102f" />
     </div>
   );
 };

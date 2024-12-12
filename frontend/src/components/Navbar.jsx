@@ -52,12 +52,12 @@ const Navbar = () => {
             </NavLink>
           </li>
 
-          <li>
+          {/* <li>
             <NavLink to="/borrow">
               <img src={borrowIcon} alt="" />
               <span>Borrow</span> 
             </NavLink>
-          </li>
+          </li> */}
         </ul>
 
       </nav>

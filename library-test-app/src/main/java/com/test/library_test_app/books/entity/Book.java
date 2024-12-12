@@ -13,21 +13,27 @@ import java.util.Stack;
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "book_number")
+    private Long bookNumber; // Renamed to camelCase to follow Java convention
 
+    @Column(name = "book_title")
     private String title;
 
+    @Column(name = "book_author")
     private String author;
 
+    @Column(name = "book_genre")
     private String genre;
 
-    private boolean isAvailable;
+    @Column(name = "book_description")
+    private String description;
+
+    @Column(name = "book_status")
+    private boolean bookStatus;
 
     private int rating;
 
     private Stack<Date> lastDateBorrowed;
-
-    private Stack<User> lastPersonBorrowed;
 
     private Stack<User> userFootPrint; // who has borrowed the book
 }

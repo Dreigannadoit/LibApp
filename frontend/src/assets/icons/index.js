@@ -10,6 +10,7 @@ import lgo from "./lgo.svg"
 import bookIconAdd from './bookiconadd.svg'
 import bookclose from './closebook.svg'
 import bookopen from './openbook.svg'
+import exit from './exit.png'
 
 export{
     avatar,
@@ -23,5 +24,6 @@ export{
     lgo,
     bookIconAdd,
     bookopen,
-    bookclose
+    bookclose,
+    exit
 }

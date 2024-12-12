@@ -16,6 +16,14 @@ public class UserService {
 
     private final UserRepository userRepository;
 
+    public User authenticateUser(String userName, String userPassword) {
+        Optional<User> user = userRepository.findByUserName(userName);
+        if (user.isPresent() && user.get().getUserPassword().equals(userPassword)) {
+            return user.get();
+        }
+        throw new EntityNotFoundException("Invalid username or password");
+    }
+
     public User postUser(User user) {
         return userRepository.save(user);
     }
@@ -46,7 +54,6 @@ public class UserService {
 
             existingUser.setUserName(user.getUserName());
             existingUser.setUserStatus(user.getUserStatus());
-            existingUser.setUserJoined(user.getUserJoined());
 
             return userRepository.save(existingUser);
         }

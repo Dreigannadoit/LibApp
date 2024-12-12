@@ -4,6 +4,7 @@
     align-items: center;
     justify-content: center;
     height: 90vh;
+    color: var(--white-color);
   }
   
   .center-form Form {
@@ -12,6 +13,7 @@
     padding: 20px;
     border: 1px solid #ccc;
     background-color: #fff;
+    color: var(--dark-color);
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
@@ -20,4 +22,23 @@
   .center-form Form .form-control {
     margin-bottom: 20px;
     padding: 10px;
+  }
+
+  .avail{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+
+  .center-form Form button{
+    
+    width: 100%;
+    background: var(--violet-grad);
+    text-align: center;
+    padding: 8%;
+    border-radius: 15px;
+    color: var(--white-color);
   }

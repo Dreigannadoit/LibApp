@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.LinkedList;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/userApi")
@@ -53,5 +54,18 @@ public class UserController {
         if( updateBook == null ) return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 
         return ResponseEntity.ok(updateBook);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody User user) {
+        try {
+            User authenticatedUser = userService.authenticateUser(user.getUserName(), user.getUserPassword());
+            return ResponseEntity.ok(authenticatedUser); // Return user details on successful login
+        } catch (EntityNotFoundException e) {
+            // Return a JSON response with an error message
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(
+                    Map.of("error", "Invalid username or password")
+            );
+        }
     }
 }

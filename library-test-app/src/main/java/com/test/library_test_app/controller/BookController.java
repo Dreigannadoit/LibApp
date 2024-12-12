@@ -7,7 +7,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.LinkedList;
 
 @RestController
@@ -53,5 +55,14 @@ public class BookController {
         if( updateBook == null ) return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 
         return ResponseEntity.ok(updateBook);
+    }
+
+    @GetMapping("/toprated")
+    public ResponseEntity<LinkedList<Book>> getTopRatedBook() {
+        LinkedList<Book> topRatedBooks = bookService.getTopRatedBook();
+        if (topRatedBooks.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
+        }
+        return ResponseEntity.ok(topRatedBooks);
     }
 }

@@ -126,7 +126,7 @@ const UpdateBook = ({ setIsAuthenticated }) => {
                         {/* Availability */}
                         <Form.Group controlId="formBookAvailability">
                             <Form.Label>Is the Book Available?</Form.Label>
-                            <div>
+                            <div className='avail'>
                                 <Form.Check
                                     type="radio"
                                     label="Yes"
