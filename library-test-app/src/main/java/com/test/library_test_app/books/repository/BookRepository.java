@@ -1,6 +1,6 @@
-package com.test.library_test_app.repository;
+package com.test.library_test_app.books.repository;
 
-import com.test.library_test_app.entity.Book;
+import com.test.library_test_app.books.entity.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

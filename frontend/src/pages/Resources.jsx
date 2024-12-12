@@ -14,7 +14,7 @@ const Resources = ({ setIsAuthenticated }) => {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const response = await fetch("http://localhost:8080/api/books");
+        const response = await fetch("http://localhost:8080/bookApi/books");
         const data = await response.json();
         console.log("Fetched data:", data); // Inspect this log
         setBooks(data);
@@ -46,7 +46,7 @@ const Resources = ({ setIsAuthenticated }) => {
 
   const handleDelete = async (bookId) => {
     try {
-      const response = await fetch(`http://localhost:8080/api/book/${bookId}`, {
+      const response = await fetch(`http://localhost:8080/bookApi/book/${bookId}`, {
         method: "DELETE",
       });
 

@@ -43,7 +43,7 @@ const AddBook = ({ setIsAuthenticated }) => {
     console.log(payload);
   
     try {
-      const response = await fetch("http://localhost:8080/api/book", {
+      const response = await fetch("http://localhost:8080/bookApi/book", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload), // Send the transformed payload

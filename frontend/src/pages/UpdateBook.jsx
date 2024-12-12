@@ -34,7 +34,7 @@ const UpdateBook = ({ setIsAuthenticated }) => {
     useEffect(() => {
         const fetchBook = async () => {
             try {
-                const response = await fetch(`http://localhost:8080/api/book/${id}`);
+                const response = await fetch(`http://localhost:8080/bookApi/book/${id}`);
                 const data = await response.json();
 
                 console.log("Fetched Data:", data); // Debugging log
@@ -67,7 +67,7 @@ const UpdateBook = ({ setIsAuthenticated }) => {
         console.log(payload);
 
         try {
-            const response = await fetch(`http://localhost:8080/api/book/${id}`, {
+            const response = await fetch(`http://localhost:8080/api/bookApi/${id}`, {
                 method: "PATCH",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(payload), // Send the transformed payload

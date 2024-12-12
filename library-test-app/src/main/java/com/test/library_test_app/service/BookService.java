@@ -1,7 +1,7 @@
 package com.test.library_test_app.service;
 
-import com.test.library_test_app.entity.Book;
-import com.test.library_test_app.repository.BookRepository;
+import com.test.library_test_app.books.entity.Book;
+import com.test.library_test_app.books.repository.BookRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

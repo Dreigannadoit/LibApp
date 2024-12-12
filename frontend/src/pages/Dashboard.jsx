@@ -37,12 +37,14 @@ const Dashboard = ({ setIsAuthenticated }) => {
 
       <div className="content">
         <div className="content_container">
+          <div className="hero">
+            <div className="status_blocks">
+              <Status title="Total Books Available" status={statusData.totalBooksAvailable} imgurl={borrowedBooks} />
+              <Status title="Borrowed Books" status={statusData.borrowedBooksThisWeek} imgurl={borrow} />
+              <Status title="Overdue" status={statusData.totalOverdueBooks} imgurl={overdue} />
+              <Status title="Members" status={statusData.registeredMembers} imgurl={avatar} />
+            </div>
 
-          <div className="status_blocks">
-            <Status title="Total Books Available" status={statusData.totalBooksAvailable} imgurl={borrowedBooks} />
-            <Status title="Borrowed Books" status={statusData.borrowedBooksThisWeek} imgurl={borrow} />
-            <Status title="Overdue" status={statusData.totalOverdueBooks} imgurl={overdue} />
-            <Status title="Members" status={statusData.registeredMembers} imgurl={avatar} />
           </div>
 
           <div className="graphs">

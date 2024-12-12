@@ -1,10 +1,9 @@
 package com.test.library_test_app.controller;
 
-import com.test.library_test_app.entity.Book;
+import com.test.library_test_app.books.entity.Book;
 import com.test.library_test_app.service.BookService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
-import org.hibernate.sql.Update;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.LinkedList;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/bookApi")
 @RequiredArgsConstructor
 @CrossOrigin("*")
 public class BookController {
