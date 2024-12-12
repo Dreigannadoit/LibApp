@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
 import java.util.HashMap;
+import java.util.Objects;
 
 @Configuration
 @EnableTransactionManagement
@@ -31,9 +32,9 @@ public class BooksDataSourceConfig {
     @ConfigurationProperties(prefix = "spring.datasource")
     public DataSource dataSource() {
         return DataSourceBuilder.create()
-                .url("jdbc:mysql://localhost:3306/book?createDatabaseIfNotExist=true")
+                .url("jdbc:mysql://localhost:3306/library")
                 .username("root")
-                .password("root@123")
+                .password("") // Provide the correct password here
                 .driverClassName("com.mysql.cj.jdbc.Driver")
                 .build();
     }
@@ -58,6 +59,6 @@ public class BooksDataSourceConfig {
     @Bean(name = "booksTransactionManager")
     public PlatformTransactionManager transactionManager(
             @Qualifier("booksEntityManagerFactory") LocalContainerEntityManagerFactoryBean entityManagerFactory) {
-        return new JpaTransactionManager(entityManagerFactory.getObject());
+        return new JpaTransactionManager(Objects.requireNonNull(entityManagerFactory.getObject()));
     }
 }

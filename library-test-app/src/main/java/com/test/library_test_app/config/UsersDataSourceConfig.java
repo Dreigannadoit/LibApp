@@ -12,7 +12,7 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import javax.sql.DataSource;
+import javax.sql.DataSource; 
 import java.util.HashMap;
 
 @Configuration
@@ -28,9 +28,9 @@ public class UsersDataSourceConfig {
     @ConfigurationProperties("spring.datasource.users")
     public DataSource usersDataSource(){
         return DataSourceBuilder.create()
-                .url("jdbc:mysql://localhost:3306/users?createDatabaseIfNotExist=true")
-                .username("root")
-                .password("root@123")
+                .url("jdbc:mysql://localhost:3306/library")
+                .username("root") 
+                .password("")
                 .driverClassName("com.mysql.cj.jdbc.Driver")
                 .build();
     }
