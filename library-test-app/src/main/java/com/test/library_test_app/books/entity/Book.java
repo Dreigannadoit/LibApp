@@ -28,4 +28,6 @@ public class Book {
     private Stack<Date> lastDateBorrowed;
 
     private Stack<User> userFootPrint; // who has borrowed the book
+
+
 }

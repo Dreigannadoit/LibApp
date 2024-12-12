@@ -31,7 +31,7 @@ public class BooksDataSourceConfig {
     @ConfigurationProperties(prefix = "spring.datasource")
     public DataSource dataSource() {
         return DataSourceBuilder.create()
-                .url("jdbc:mysql://localhost:3306/books?createDatabaseIfNotExist=true")
+                .url("jdbc:mysql://localhost:3306/book?createDatabaseIfNotExist=true")
                 .username("root")
                 .password("root@123")
                 .driverClassName("com.mysql.cj.jdbc.Driver")

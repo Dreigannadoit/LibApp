@@ -20,7 +20,7 @@ public class UserController {
 
     @PostMapping("/user")
     public User postBook(@RequestBody User user){
-        return userService.postBook(user);
+        return userService.postUser(user);
     }
 
     @GetMapping("users")

@@ -25,4 +25,11 @@ public class User {
     private String userStatus; // Borrowing, Overdue
 
     private Stack<Book> userBorrowedHistory;
+
+    @PrePersist
+    public void prePerisist() {
+        if (this.userJoined == null) {
+            this.userJoined = LocalDateTime.now();
+        }
+    }
 }

@@ -16,7 +16,7 @@ public class UserService {
 
     private final UserRepository userRepository;
 
-    public User postBook(User user) {
+    public User postUser(User user) {
         return userRepository.save(user);
     }
 
@@ -28,7 +28,7 @@ public class UserService {
 
     public void deleteUser(Long id) {
         if (!userRepository.existsById(id)) {
-            throw new EntityNotFoundException("No Book with the id " + '"' + id + '"' + " is in our database, Dumb Ass");
+            throw new EntityNotFoundException("No User with the id " + '"' + id + '"' + " is in our database, Dumb Ass");
         }
         userRepository.deleteById(id);
     }
@@ -40,7 +40,7 @@ public class UserService {
     public User updateUser(Long id, User user) {
         Optional<User> optionalUser = userRepository.findById(id);
 
-        // Only update if the book exists in the database
+        // Only update if the User exists in the database
         if (optionalUser.isPresent()) {
             User existingUser = optionalUser.get();
 
