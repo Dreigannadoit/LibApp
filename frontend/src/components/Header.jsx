@@ -4,7 +4,6 @@ import { bookclose, bookopen } from "../assets/icons";
 import useToggleNav from "../hooks/useToggleNav";
 
 const Header = ({ current_page, setIsAuthenticated }) => {
-  const { openNav, handleToggleNav } = useToggleNav();
   const user_avatar = "";
   const user_name = "Username";
   const navigate = useNavigate();
@@ -17,9 +16,9 @@ const Header = ({ current_page, setIsAuthenticated }) => {
 
   return (
     <header>
-      <div className={`${openNav ? "" : "close-nav"}`}>
+      <div>
         <div>
-          <button onClick={handleToggleNav}>
+          <button>
             <img src={bookclose} alt="Close Nav Icon" />
             <img src={bookopen} alt="Open Nav Icon" />
           </button>
@@ -31,7 +30,7 @@ const Header = ({ current_page, setIsAuthenticated }) => {
             <img src={user_avatar} alt="User Avatar" />
           </div>
           <button onClick={handleExit} className="exit-button">
-            Exit
+            Logout
           </button>
         </div>
       </div>

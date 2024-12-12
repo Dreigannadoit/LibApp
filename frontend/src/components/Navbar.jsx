@@ -19,7 +19,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className={`sidebar ${openNav ? "" : "closr-nav"}`} onMouseEnter={handleToggleNav} onMouseLeave={handleToggleNav}>
+    <div className={`sidebar ${openNav ? "" : "close-nav"}`} onMouseEnter={handleToggleNav} onMouseLeave={handleToggleNav}>
       <nav>
         <img src={lgo} alt="" />
         
