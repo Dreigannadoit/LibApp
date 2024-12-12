@@ -2,19 +2,25 @@ package com.test.library_test_app.service;
 
 import com.test.library_test_app.books.entity.Book;
 import com.test.library_test_app.books.repository.BookRepository;
+import jakarta.annotation.PostConstruct;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
 public class BookService {
-
+    private PriorityQueue<Book> topRatedPublications;
     private final BookRepository bookRepository;
+    private final int NUMBER_OF_TOP_RATED_BOOKS = 10;
+
+    @PostConstruct
+    public void init() {
+        topRatedPublications = new PriorityQueue<>(Comparator.comparing(Book::getRating).reversed());
+    }
+
 
     public Book postBook(Book book) {
         return bookRepository.save(book);
@@ -53,5 +59,21 @@ public class BookService {
         }
 
         return null;
+    }
+
+    public void addTopRatedBook(Book book) {
+        if (topRatedPublications.size() < NUMBER_OF_TOP_RATED_BOOKS) {
+            topRatedPublications.add(book);
+        } else if (book.getRating() > topRatedPublications.peek().getRating()) {
+            topRatedPublications.poll();
+            topRatedPublications.add(book);
+        }
+    }
+
+    public LinkedList<Book> getTopRatedBook(){
+        LinkedList<Book> sortedBooks = new LinkedList<>(topRatedPublications);
+        sortedBooks.sort(Comparator.comparing(Book::getRating).reversed());
+
+        return sortedBooks;
     }
 }
