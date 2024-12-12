@@ -11,23 +11,25 @@ import java.util.Stack;
 @Data
 @Table(name = "books")
 public class Book {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "book_number")
+    private Long bookNumber; // Renamed to camelCase to follow Java convention
 
-    private String title;
+    @Column(name = "book_title")
+    private String bookTitle; // Renamed to camelCase
 
-    private String author;
+    @Column(name = "book_author")
+    private String bookAuthor; // Renamed to camelCase
 
-    private String genre;
+    @Column(name = "book_genre")
+    private String bookGenre; // Renamed to camelCase
 
-    private boolean isAvailable;
+    @Column(name = "book_status")
+    private boolean bookStatus; // Renamed to camelCase
 
-    private int rating;
+    private int rating; // No change
 
-    private Stack<Date> lastDateBorrowed;
-
-    private Stack<User> lastPersonBorrowed;
-
-    private Stack<User> userFootPrint; // who has borrowed the book
+   
 }
