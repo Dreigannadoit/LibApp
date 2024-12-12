@@ -14,22 +14,14 @@ import java.util.Stack;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id") // Map to the "user_id" column in the database
     private Long id;
 
+    @Column(name = "username", nullable = false, unique = true) // Map to the "username" column
     private String userName;
 
+    @Column(name = "password", nullable = false) // Map to the "password" column
     private String userPassword;
+    
 
-    private LocalDateTime userJoined;
-
-    private String userStatus; // Borrowing, Overdue
-
-    private Stack<Book> userBorrowedHistory;
-
-    @PrePersist
-    public void prePerisist() {
-        if (this.userJoined == null) {
-            this.userJoined = LocalDateTime.now();
-        }
-    }
 }
