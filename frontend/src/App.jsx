@@ -32,7 +32,7 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<Login setIsAuthenticated={setIsAuthenticated} />}
+            element={<Registration setIsAuthenticated={setIsAuthenticated} />}
           />
           <Route
             path="/dashboard"

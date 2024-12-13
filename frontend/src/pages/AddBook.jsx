@@ -10,6 +10,7 @@ const AddBook = ({ setIsAuthenticated }) => {
     title: "",
     author: "",
     genre: "",
+    description: "",
     isAvailable: true, // Default to 'Yes'
   });
 
@@ -97,6 +98,17 @@ const AddBook = ({ setIsAuthenticated }) => {
                 name="genre"
                 placeholder="Enter Genre"
                 value={formData.genre}
+                onChange={handleInputChange}
+              />
+            </Form.Group>
+
+            {/* Discription */}
+            <Form.Group controlId="formBookDiscription">
+              <Form.Control
+                type="textfield"
+                name="description"
+                placeholder="Enter Deiscription"
+                value={formData.description}
                 onChange={handleInputChange}
               />
             </Form.Group>

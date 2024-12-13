@@ -15,35 +15,34 @@ const Login = ({ setIsAuthenticated }) => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    try {
-      const response = await fetch("http://localhost:8080/userApi/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          userName: formData.username,
-          userPassword: formData.password,
-        }),
-      });
-      
-
-      if (response.ok) {
-        const user = await response.json(); // Parse the authenticated user data
-        console.log("User authenticated:", user);
-        setIsAuthenticated(true); // Set authenticated state
-        setErrorMessage(""); // Clear any previous error messages
-        navigate("/dashboard"); // Redirect to the dashboard or another page
-      } else {
-        const error = await response.text();
-        throw new Error(error || "Invalid username or password");
-      }
-    } catch (error) {
-      console.error(error.message);
-      setErrorMessage(error.message); // Display error to the user
-    }
+    // e.preventDefault();
+  
+    // try {
+    //   const response = await fetch("http://localhost:8080/userApi/login", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify({
+    //       userName: formData.username, // Ensure this matches your backend
+    //       userPassword: formData.password, // Ensure this matches your backend
+    //     }),
+    //   });
+  
+    //   if (response.ok) {
+    //     const user = await response.json(); // Parse the authenticated user data
+    //     console.log("User  authenticated:", user);
+    //     setIsAuthenticated(true); // Set authenticated state
+    //     setErrorMessage(""); // Clear any previous error messages
+    //     navigate("/dashboard"); // Redirect to the dashboard or another page
+    //   } else {
+    //     const error = await response.json(); // Parse the error response
+    //     throw new Error(error.error || "Invalid username or password");
+    //   }
+    // } catch (error) {
+    //   console.error("Login error:", error.message);
+    //   setErrorMessage(error.message); // Display error to the user
+    // }
   };
 
   return (

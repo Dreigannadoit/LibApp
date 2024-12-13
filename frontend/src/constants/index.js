@@ -64,47 +64,6 @@ const dataList = [210, 13, 234, 456, 123, 78, 234, 123, 56, 128, 234, 463, 31];
 
 export const sum = dataList.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
 
-export const popularGenre = {
-    labels: [
-        "Computer Science",
-        "Mathematics",
-        "History",
-        "Calculus",
-        "Physics",
-        "General Science",
-        "Literature",
-        "Economics",
-        "Entrepreneurship",
-        "Business Administration",
-        "Natural Science",
-        "Algebra",
-        "Political Science"
-    ],
-    datasets: [
-        {
-            label: "Most Borrowed Genre",
-            data: dataList,
-            backgroundColor: [
-                "rgb(255, 99, 132)", // Computer Science
-                "rgb(54, 162, 235)", // Mathematics
-                "rgb(255, 205, 86)", // History
-                "rgb(75, 192, 192)", // Calculus
-                "rgb(153, 102, 255)", // Physics
-                "rgb(255, 159, 64)", // General Science
-                "rgb(201, 203, 207)", // Literature
-                "rgb(255, 99, 71)", // Economics
-                "rgb(144, 238, 144)", // Entrepreneurship
-                "rgb(135, 206, 250)", // Business Administration
-                "rgb(244, 164, 96)", // Natural Science
-                "rgb(123, 104, 238)", // Algebra
-                "rgb(60, 179, 113)", // Political Science
-            ],
-            hoverOffset: 4
-        }
-    ]
-};
-
-
 export const bookTestDatabase = [
     {
         title: "The Wild Robot",

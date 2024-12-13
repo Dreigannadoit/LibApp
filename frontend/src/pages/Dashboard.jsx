@@ -4,7 +4,7 @@ import Status from '../components/status';
 import React, { useEffect, useRef, useState } from 'react'
 import { Chart as ChartJs, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, ArcElement, BarController, BarElement } from "chart.js";
 import { Bar, Doughnut, Line, Pie } from 'react-chartjs-2';
-import { borrowRateThisWeek, popularGenre, sum } from "../constants";
+import { borrowRateThisWeek, sum } from "../constants";
 import { avatar, borrow, borrowedBooks, overdue } from "../assets/icons";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
@@ -23,14 +23,15 @@ ChartJs.register(
 
 const Dashboard = ({ setIsAuthenticated }) => {
   // State for statuses
+  const [totalBooksAvailable, setTotalBooksAvailable] = useState(0);
+
   const [statusData, setStatusData] = useState({
-    totalBooksAvailable: 120, // Example data
     borrowedBooksThisWeek: 45, // Example data
     totalOverdueBooks: 10, // Example data
     registeredMembers: 230, // Example data
   });
 
-  const [books, setBooks] = useState([]); // Correct
+  const [books, setBooks] = useState([]); 
 
   useEffect(() => {
     const fetchBooks = async () => {
@@ -46,6 +47,22 @@ const Dashboard = ({ setIsAuthenticated }) => {
 
     fetchBooks();
   }, []);
+
+  useEffect(() => {
+    const fetchTotalBooksAvailable = async () => {
+      try {
+        const response = await fetch("http://localhost:8080/bookApi/availableBooksCount");
+        const data = await response.json();
+        console.log("Fetched total available books count:", data);
+        setTotalBooksAvailable(data); // Set the count directly
+      } catch (error) {
+        console.error("Error Fetching total available books:", error.message);
+      }
+    };
+
+    fetchTotalBooksAvailable();
+  }, []);
+
   return (
 
     <section className='dashoard'>
@@ -56,7 +73,7 @@ const Dashboard = ({ setIsAuthenticated }) => {
         <div className="content_container">
           <div className="hero">
             <div className="status_blocks">
-              <Status title="Total Books Available" status={statusData.totalBooksAvailable} imgurl={borrowedBooks} />
+              <Status title="Total Books Available" status={totalBooksAvailable} imgurl={borrowedBooks} />
               <Status title="Borrowed Books" status={statusData.borrowedBooksThisWeek} imgurl={borrow} />
               <Status title="Overdue" status={statusData.totalOverdueBooks} imgurl={overdue} />
               <Status title="Members" status={statusData.registeredMembers} imgurl={avatar} />
@@ -172,11 +189,52 @@ const TotalGenre = () => {
       <h1>{sum}</h1>
       <p>Books in Inventory</p>
       <div className="popular_genre_container">
-        <Doughnut ref={chartRef} options={options} data={popularGenre} />
+        <Doughnut ref={chartRef} options={options} data={allBook} />
       </div>
     </div>
   );
 };
+ 
+const allBook = {
+  labels: [
+      "Computer Science",
+      "Mathematics",
+      "History",
+      "Calculus",
+      "Physics",
+      "General Science",
+      "Literature",
+      "Economics",
+      "Entrepreneurship",
+      "Business Administration",
+      "Natural Science",
+      "Algebra",
+      "Political Science"
+  ],
+  datasets: [
+      {
+          label: "All Books",
+          data: dataList,
+          backgroundColor: [
+              "rgb(255, 99, 132)", // Computer Science
+              "rgb(54, 162, 235)", // Mathematics
+              "rgb(255, 205, 86)", // History
+              "rgb(75, 192, 192)", // Calculus
+              "rgb(153, 102, 255)", // Physics
+              "rgb(255, 159, 64)", // General Science
+              "rgb(201, 203, 207)", // Literature
+              "rgb(255, 99, 71)", // Economics
+              "rgb(144, 238, 144)", // Entrepreneurship
+              "rgb(135, 206, 250)", // Business Administration
+              "rgb(244, 164, 96)", // Natural Science
+              "rgb(123, 104, 238)", // Algebra
+              "rgb(60, 179, 113)", // Political Science
+          ],
+          hoverOffset: 4
+      }
+  ]
+};
+
 
 const TableUsers = () => {
   let userStats = [

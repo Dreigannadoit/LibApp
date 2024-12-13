@@ -17,12 +17,18 @@ import java.util.LinkedList;
 @RequiredArgsConstructor
 @CrossOrigin("*")
 public class BookController {
-
+//
     private final BookService bookService;
 
     @PostMapping("/book")
     public Book postBook(@RequestBody Book book){
         return bookService.postBook(book);
+    }
+
+    @GetMapping("/availableBooksCount")
+    public ResponseEntity<Long> getAvailableBooksCount() {
+        long count = bookService.getAvailableBooksCount();
+        return ResponseEntity.ok(count);
     }
 
     @GetMapping("books")

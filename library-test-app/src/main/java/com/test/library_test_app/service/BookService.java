@@ -9,11 +9,14 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.text.SimpleDateFormat;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 
@@ -24,12 +27,13 @@ public class BookService {
     private final BookRepository bookRepository;
     private final int NUMBER_OF_TOP_RATED_BOOKS = 3;
 
-    @Value("${file.upload-dir}") // Inject the file upload directory from application.properties
-    private String uploadDir;
-
     @PostConstruct
     public void init() {
         topRatedPublications = new PriorityQueue<>(Comparator.comparing(Book::getRating).reversed());
+    }
+
+    public long getAvailableBooksCount() {
+        return bookRepository.countByBookStatus(true);
     }
 
     public Book postBook(Book book) {
@@ -44,7 +48,7 @@ public class BookService {
 
     public void deleteBook(Long id) {
         if (!bookRepository.existsById(id)) {
-            throw new EntityNotFoundException("No Book with the id " + '"' + id + '"' + " is in our database, Dumb Ass");
+            throw new EntityNotFoundException("No Book with the id " + '"' + id + '"' + " is in our database");
         }
         bookRepository.deleteById(id);
     }
@@ -56,10 +60,10 @@ public class BookService {
     public Book updateBook(Long id, Book book) {
         Optional<Book> optionalBook = bookRepository.findById(id);
 
-        // Only update if the book exists in the database
         if (optionalBook.isPresent()) {
             Book existingBook = optionalBook.get();
 
+            // Update the book fields
             existingBook.setTitle(book.getTitle());
             existingBook.setAuthor(book.getAuthor());
             existingBook.setGenre(book.getGenre());
@@ -67,11 +71,22 @@ public class BookService {
             existingBook.setRating(book.getRating());
             existingBook.setBookStatus(book.isBookStatus());
 
+            // Add the current date to the update history (in memory)
+            Date currentDate = new Date();
+            if (existingBook.getUpdateHistory() == null) {
+                existingBook.setUpdateHistory(new Stack<>());
+            }
+            existingBook.getUpdateHistory().add(currentDate);
+
+            // Set the latest update date for the database
+            existingBook.setLastDateUpdated(currentDate);
+
             return bookRepository.save(existingBook);
         }
 
         return null;
     }
+
 
     public void addTopRatedBook(Book book) {
         if (topRatedPublications.size() < NUMBER_OF_TOP_RATED_BOOKS) {

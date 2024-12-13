@@ -25,6 +25,14 @@ public class UserService {
     }
 
     public User postUser(User user) {
+        if (user.getUserName() == null || user.getUserName().isEmpty()) {
+            throw new IllegalArgumentException("User  name cannot be null or empty");
+        }
+
+        user = new User();
+        user.setUserName(user.getUserName());
+        user.setUserPassword(user.getUserPassword());
+
         return userRepository.save(user);
     }
 
@@ -53,7 +61,7 @@ public class UserService {
             User existingUser = optionalUser.get();
 
             existingUser.setUserName(user.getUserName());
-            existingUser.setUserStatus(user.getUserStatus());
+//            existingUser.setUserStatus(user.getUserStatus());
 
             return userRepository.save(existingUser);
         }

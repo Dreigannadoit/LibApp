@@ -44,23 +44,23 @@ const Resources = ({ setIsAuthenticated }) => {
     })
   : [];
 
-  const handleDelete = async (bookId) => {
+  const handleDelete = async (bookNumber) => {
     try {
-      const response = await fetch(`http://localhost:8080/bookApi/book/${bookId}`, {
+      const response = await fetch(`http://localhost:8080/bookApi/book/${bookNumber}`, {
         method: "DELETE",
       });
 
       if (response.ok) {
-        setBooks((prevBooks) => prevBooks.filter((book) => book.id !== bookId));
-        console.log(`Book with ID ${bookId} was deleted. Skibidi`);
+        setBooks((prevBooks) => prevBooks.filter((book) => book.id !== bookNumber));
+        console.log(`Book with ID ${bookNumber} was deleted. Skibidi`);
       }
     } catch (error) {
       console.log("Error deleting book:", error.message);
     }
   };
 
-  const HandleUpdate = (bookId) => {
-    navigate(`/resources/${bookId}`);
+  const HandleUpdate = (bookNumber) => {
+    navigate(`/resources/${bookNumber}`);
   }
 
   return (
@@ -101,19 +101,20 @@ const Resources = ({ setIsAuthenticated }) => {
 
                   <h1>{book.title}</h1>
                   <h2>{book.author}</h2>
-                  <p>#{book.id}</p>
+                  <p>#{book.bookNumber}</p>
                   <p>{book.genre}</p>
+                  <p>Last Modified: {new Date(book.lastDateUpdated).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}</p>
 
                   <div className="crud_controlls">
                     <button
                       className="editbtn"
-                      onClick={() => HandleUpdate(book.id)}
+                      onClick={() => HandleUpdate(book.bookNumber)}
                     >
                       Edit
                     </button>
                     <button
                       className="deletebtn"
-                      onClick={() => handleDelete(book.id)}
+                      onClick={() => handleDelete(book.bookNumber)}
                     >
                       Delete
                     </button>

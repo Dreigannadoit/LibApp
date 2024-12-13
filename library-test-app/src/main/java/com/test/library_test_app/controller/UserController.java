@@ -20,8 +20,16 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping("/user")
-    public User postBook(@RequestBody User user){
-        return userService.postUser(user);
+    public ResponseEntity<?> postUser (@RequestBody User user) {
+        try {
+            User savedUser  = userService.postUser(user);
+            return ResponseEntity.status(HttpStatus.CREATED).body(savedUser );
+        } catch (Exception e) {
+            e.printStackTrace(); // Log the exception for debugging
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(
+                    Map.of("error", "An error occurred while saving the user: " + e.getMessage())
+            );
+        }
     }
 
     @GetMapping("users")
@@ -58,6 +66,7 @@ public class UserController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody User user) {
+        System.out.println("Received login request for user: " + user);
         try {
             User authenticatedUser = userService.authenticateUser(user.getUserName(), user.getUserPassword());
             return ResponseEntity.ok(authenticatedUser); // Return user details on successful login

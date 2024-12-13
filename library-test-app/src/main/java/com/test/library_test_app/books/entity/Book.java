@@ -11,10 +11,11 @@ import java.util.Stack;
 @Data
 @Table(name = "books")
 public class Book {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "book_number")
-    private Long bookNumber; // Renamed to camelCase to follow Java convention
+    private Long bookNumber;
 
     @Column(name = "book_title")
     private String title;
@@ -33,7 +34,13 @@ public class Book {
 
     private int rating;
 
-    private Stack<Date> lastDateBorrowed;
+    // Only store the latest date in the database
+    @Column(name = "last_date_updated")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date lastDateUpdated;
 
-    private Stack<User> userFootPrint; // who has borrowed the book
+    // This stack will not be persisted in the database
+    @Transient
+    private Stack<Date> updateHistory = new Stack<>();
 }
+
